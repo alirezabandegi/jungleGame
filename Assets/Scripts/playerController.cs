@@ -6,6 +6,8 @@ public class playerController : MonoBehaviour
 {
     public float speed = 10.0f;
 
+    public GameObject projectilePrefab;
+
     private float horizontalInput;
     private float xRange = 22.0f;
 
@@ -30,5 +32,10 @@ public class playerController : MonoBehaviour
 
         horizontalInput = Input.GetAxis("Horizontal");
         transform.Translate(Vector3.right * Time.deltaTime * horizontalInput * speed);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
+        }
     }
 }
